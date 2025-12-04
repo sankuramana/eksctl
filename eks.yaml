@@ -1,0 +1,30 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+    name: roboshop-dev
+    region: us-east-1
+managedNodeGroups:
+  - name: roboshop-dev
+    instanceTypes: ["m5.large","t3.small", "t3.medium","c5.large"]
+    desiredCapacity: 2 #  by default this value is 3
+    spot: true
+
+
+
+# apiVersion: eksctl.io/v1alpha5      # API version for eksctl cluster configuration
+# kind: ClusterConfig                 # This file defines an EKS cluster configuration
+
+# metadata:
+#   name: roboshop-dev                # Name of your EKS cluster
+#   region: us-east-1                 # Region where the cluster will be created
+
+# managedNodeGroups:
+#   - name: roboshop-dev              # Name of the managed node group
+#     instanceTypes:                  # List of EC2 instance types allowed for nodes
+#       - "m5.large"                  # Instance type option 1
+#       - "t3.small"                  # Instance type option 2
+#       - "t3.medium"                 # Instance type option 3
+#       - "c5.large"                  # Instance type option 4
+#     desiredCapacity: 2              # Number of worker nodes to create (default is 3)
+#     spot: true                      # Use Spot Instances to reduce cost
