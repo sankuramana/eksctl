@@ -18,3 +18,21 @@ PLATFORM=$(uname -s)_$ARCH
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
+
+mkdir -p /opt/eks
+
+cat >/opt/eks/cluster.yaml <<'EOC'
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+    name: roboshop-dev
+    region: us-east-1
+managedNodeGroups:
+  - name: roboshop-dev
+    instanceTypes: ["m5.large", "c3.large","c4.large","c5.large"]
+    desiredCapacity: 3 #  by default this value is 3
+    spot: true
+EOC
+
+eksctl create cluster -f /opt/eks/cluster.yaml
