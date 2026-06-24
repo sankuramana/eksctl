@@ -30,9 +30,13 @@ metadata:
     region: us-east-1
 managedNodeGroups:
   - name: roboshop-dev
-    instanceTypes: ["m5.large", "c3.large","c4.large","c5.large"]
-    desiredCapacity: 3 #  by default this value is 3
+    #instanceTypes: ["m5.large", "c3.large","c4.large","c5.large"]
+    instanceTypes: ["t3.small"] 
+    desiredCapacity: 2 #  by default this value is 3
     spot: true
 EOC
 
 eksctl create cluster -f /opt/eks/cluster.yaml
+# Configure kubectl to connect to EKS
+#aws eks update-kubeconfig --region us-east-1 --name roboshop-dev
+aws eks update-kubeconfig --region us-east-1 --name roboshop-dev

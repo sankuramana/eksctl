@@ -17,3 +17,13 @@ data "aws_ami" "joindevops" {
         values = ["hvm"]
     }
 }
+data "aws_vpc" "roboshop" {
+  id = "vpc-0a3edda9713b06c3b"
+}
+data "aws_subnet" "public_1" {
+  id = "subnet-053b0735446651941"
+}
+
+data "aws_subnet" "public_2" {
+  id = "subnet-0fb4219d07768788d"
+}
