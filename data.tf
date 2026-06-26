@@ -18,12 +18,12 @@ data "aws_ami" "joindevops" {
     }
 }
 data "aws_vpc" "roboshop" {
-  id = "vpc-0a3edda9713b06c3b"
+  id = "vpc-0527fb5adea977f11"
 }
 data "aws_subnet" "public_1" {
-  id = "subnet-053b0735446651941"
+  id = "subnet-058a3c3670920308b"
 }
 
 data "aws_subnet" "public_2" {
-  id = "subnet-0fb4219d07768788d"
+  id = "subnet-09ce2d5b6a9757ca7"
 }
